@@ -18,15 +18,17 @@ if __name__ == "__main__":
         print("\n Answer:\n")
         print(result["answer"])
 
-        print("\n Sources:\n")
+        print("\n Source:\n")
 
         if not result["sources"]:
-            print("No sources found.")
+            print("The answer is not available in the provided documents.")
         else:
-            for src in result["sources"]:
-                print(f"Document: {src['source']}")
-                print(f"Page: {src['page']}")
-                print(f"Retrieved Text: \"{src['snippet']}\"")
-                print("-" * 50)
+            # Show only top 2 sources (clean)
+            for src in result["sources"][:2]:
+                print(f"{src['source']}")
+                print(f"Page {src['page']}")
+                print("Retrieved Text:")
+                print(f"\"{src['snippet']}\"")
+                print()
 
         print("\n" + "="*50 + "\n")
